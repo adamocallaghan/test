@@ -23,3 +23,5 @@ twbs:bootstrap
 reactive-dict
 accounts-ui
 accounts-password
+kadira:flow-router
+kadira:blaze-layout

@@ -5,14 +5,14 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Tasks } from '../api/tasks.js';
 
 import './task.js';
-import './body.html';
+import './content.html';
 
-Template.body.onCreated(function bodyOnCreated() {
+Template.content.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
 });
 
 // Helper returns the list of tasks from the database
-Template.body.helpers({
+Template.content.helpers({
     tasks() {
         const instance = Template.instance();
         if (instance.state.get('hideCompleted')) {
@@ -28,7 +28,7 @@ Template.body.helpers({
 });
 
 // Event listener inserts new task to the database
-Template.body.events({
+Template.content.events({
     'submit .new-task'(event) {
         // Prevent default browser form submit
         event.preventDefault();
