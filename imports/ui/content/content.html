@@ -1,8 +1,10 @@
 <template name="content">
-    <div class="container">
+    {{>navbar}}
+    {{>sidebar}}
+    <div class="container main-content col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
     <header>
         <h1>Todo List ({{incompleteCount}})</h1>
-
+        <a href="/report">Report</a> | <a href="/query">Query</a>
         <label class="hide-completed">
             <input type="checkbox" />
             Hide Completed Tasks

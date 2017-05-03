@@ -2,9 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
-import { Tasks } from '../api/tasks.js';
+import { Tasks } from '../../api/tasks.js';
 
-import './task.js';
+import '../task/task.js';
 import './content.html';
 
 Template.content.onCreated(function bodyOnCreated() {
