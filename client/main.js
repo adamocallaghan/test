@@ -1,6 +1,6 @@
 import '../imports/startup/accounts-config';
-import '../imports/ui/content/content.js';
-import '../imports/ui/query/query.html';
+import '../imports/ui/todos/todos.js';
+import '../imports/ui/queries/queries.js';
 import '../imports/ui/report/report.html';
 import '../imports/ui/home/home.html';
 import '../imports/ui/trending/trending.html';

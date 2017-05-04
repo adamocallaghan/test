@@ -5,7 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Tasks } from '../../api/tasks.js';
 
 import '../task/task.js';
-import './content.html';
+import './todos.html';
 
 Template.content.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();

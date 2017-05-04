@@ -1,0 +1,25 @@
+<template name="queries">
+    {{>navbar}}
+    {{>sidebar}}
+    <div class="container main-content col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-2">
+    <header>
+        <h1>Queries <span class="badge">{{incompleteCount}}</span></h1>
+
+        {{#if currentUser}}
+            <form class="new-task">
+                <input type="text" class="form-control" name="text" placeholder="Type to add new tasks" />
+                <label class="hide-completed pull-right">
+                    <input type="checkbox" />
+                    Hide Completed
+                </label>
+            </form>
+        {{/if}}
+    </header>
+
+    <div class="panel-group" style="padding-top: 30px">
+        {{#each querys}}
+            {{> query}}
+        {{/each}}
+    </div>
+    </div>
+</template>

@@ -8,7 +8,7 @@ FlowRouter.route('/todos', {
 // Route for Query page
 FlowRouter.route('/query', {
     action: function() {
-        BlazeLayout.render("body", {content: "query"});
+        BlazeLayout.render("body", {content: "queries"});
     }
 });
 
