@@ -4,14 +4,29 @@ import { Queries } from '../../api/queries.js';
 
 import './home.html';
 
+Template.home.helpers({
+    searchResults: function () {
+        return Session.get('searchResults');
+    }
+});
+
 Template.home.events({
-    'click .btn'(event) {
+    'submit .new-search'(event) {
+        // Prevent default browser form submit
+        event.preventDefault();
+
+        // Get value from form element
+        const target = event.target;
+
         // Search Term
-        var mySearchTerm = "Shane Ross"; // hardcoding this in for testing purposes
+        var mySearchTerm = target.text.value; // make search term the one the user entered
+
         // Client log
         console.log("Hello client!" + mySearchTerm);
+
         // Server call
         Meteor.call('runQuery', mySearchTerm, function(error, result) {
+            Session.set('searchResults', result);
             console.log(result);
         });
     },

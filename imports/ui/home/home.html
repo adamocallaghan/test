@@ -3,7 +3,25 @@
     {{>sidebar}}
     <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <h1>Homepage</h1>
-        <p>Lorem ipsum...</p>
-        <button class="btn">Click Me!</button>
+        <p>Search for a person of interest here and Irish media articles about them will be returned...</p>
+        <form class="new-search form-group">
+            <input type="text" class="form-control" name="text" placeholder="Search for people..." />
+            <button type="submit" class="btn btn-block">Search</button>
+        </form>
+        <div class="row">
+            {{#each searchResults}}
+            <div class="col-md-12 media" style="{{visible}}">
+                <div class="media-left">
+                    <a href="{{link}}">
+                        <img class="media-object" src="{{image}}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">{{title}}</h3>
+                    <p>{{description}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
     </div>
 </template>

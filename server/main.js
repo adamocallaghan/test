@@ -13,6 +13,7 @@ Meteor.methods({
         console.log("Hello server!"+ mySearchTerm)
         // Scrape main Irish websites
         websiteData = Scrape.feed("http://www.rte.ie/news/rss/news-headlines.xml");
+        //irishTimesData = Scrape.feed("https://www.irishtimes.com/cmlink/news-1.1319192");
         //console.log(websiteData);
         // Array to Return
         returnThis = new Array();
@@ -46,12 +47,14 @@ Meteor.methods({
                     image: articleImage,
                     link: articleLink,
                     text: articleInfo.text,
-                    person1: person1
+                    person1: person1,
+                    visible: ""
                 });
             }
             else {
                 obj = new Object({
-                    title:"No Results Found"
+                    title: null,
+                    visible: "display:none"
                 });
             }
             returnThis[i] = obj;
