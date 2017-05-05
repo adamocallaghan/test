@@ -49,7 +49,8 @@
         <!-- Results Row -->
         <div class="row FlexboxRows">
             {{#each articles}}
-            <div class="col-md-6 media myMediaPanel {{polarity}}" style="{{visible}}">
+            <div class="col-md-6 media myMediaPanel" style="{{visible}}">
+                <blockquote class="{{polarity}}">
                 <h3 class="media-heading">{{title}}</h3>
                 <!-- Thumbnail Content -->
                 <div class="media-body">
@@ -65,6 +66,7 @@
                     <h5>Source: {{source}}</h5>
                     <button class="btn btn-success view">View</button>
                 </div>
+                </blockquote>
             </div>
             {{/each}}
         </div>

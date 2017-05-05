@@ -1,6 +1,6 @@
 <template name="articlemodal">
     <div class="modal fade">
-        <div class="modal-dialog {{polarity}}">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header {{polarity}}">
                     <h3 class="modal-title">{{title}}</h3>
@@ -17,12 +17,15 @@
                         <li>Positive Words: {{posWords}}</li>
                         <li>Negative Words: {{negWords}}</li>
                     </ul>
-                    <div id="piecontainer">
-                        <div id="" class="cover" style="transform: rotate(0deg);">
-                            <div id="part1" class="pie" style="transform: rotate(180deg)"></div>
+                    <!-- Progress Bars -->
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{posPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{posPerc}}%">
+                            <span class="sr-only">{{posPerc}}% Complete (success)</span>
                         </div>
-                        <div id="" class="cover" style="transform: rotate(180deg)">
-                            <div id="part2" class="pie" style="transform: rotate(180deg)"></div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{negPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{negPerc}}%">
+                            <span class="sr-only">{{negPerc}}% Complete (danger)</span>
                         </div>
                     </div>
                     <hr>

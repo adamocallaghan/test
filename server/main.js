@@ -52,10 +52,12 @@ Meteor.methods({
             // Sentimient Analysis
             var r1 = sentiment(articleInfo.text);
 
-            if (r1.score > 0){
+            if (r1.score >= 1){
                 polarity = "pos";
-            } else {
+            } else if (r1.score <= -1) {
                 polarity = "neg";
+            } else if (r1.score <1 && r1.score >-1) {
+                polarity = "neu";
             }
             var positiveWords = r1.positive;
             var negativeWords = r1.negative;
@@ -117,10 +119,12 @@ Meteor.methods({
             // Sentimient Analysis
             var r1 = sentiment(articleInfo.text);
 
-            if (r1.score > 0){
+            if (r1.score >= 1){
                 polarity = "pos";
-            } else {
+            } else if (r1.score <= -1) {
                 polarity = "neg";
+            } else if (r1.score <1 && r1.score >-1) {
+                polarity = "neu";
             }
             var positiveWords = r1.positive;
             var negativeWords = r1.negative;
@@ -182,10 +186,12 @@ Meteor.methods({
             // Sentimient Analysis
             var r1 = sentiment(articleInfo.text);
 
-            if (r1.score > 0){
+            if (r1.score >= 1){
                 polarity = "pos";
-            } else {
+            } else if (r1.score <= -1) {
                 polarity = "neg";
+            } else if (r1.score <1 && r1.score >-1) {
+                polarity = "neu";
             }
             var positiveWords = r1.positive;
             var negativeWords = r1.negative;
@@ -247,10 +253,12 @@ Meteor.methods({
             // Sentimient Analysis
             var r1 = sentiment(articleInfo.text);
 
-            if (r1.score > 0){
+            if (r1.score >= 1){
                 polarity = "pos";
-            } else {
+            } else if (r1.score <= -1) {
                 polarity = "neg";
+            } else if (r1.score <1 && r1.score >-1) {
+                polarity = "neu";
             }
             var positiveWords = r1.positive;
             var negativeWords = r1.negative;

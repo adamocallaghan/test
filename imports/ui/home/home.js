@@ -100,6 +100,11 @@ Template.home.events({
     },
     'click .view'() {
         Articles.find(this._id);
+        totalWords = (this.posWords.length) + (this.negWords.length);
+        onePerc = 100/totalWords;
+        posPerc = this.posWords.length * onePerc;
+        negPerc = this.negWords.length * onePerc;
+
         Modal.show('articlemodal', {
             id: this._id,
             title: this.title,
@@ -111,6 +116,8 @@ Template.home.events({
             link: this.link,
             posWords: this.posWords.length,
             negWords: this.negWords.length,
+            posPerc: posPerc,
+            negPerc: negPerc,
         });
         console.log(this._id);
     },
