@@ -49,6 +49,17 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "RTE";
 
+            // Sentimient Analysis
+            var r1 = sentiment(articleInfo.text);
+
+            if (r1.score > 0){
+                polarity = "pos";
+            } else {
+                polarity = "neg";
+            }
+            var positiveWords = r1.positive;
+            var negativeWords = r1.negative;
+
             // Display link on console
             console.log(articleLink);
 
@@ -76,6 +87,11 @@ Meteor.methods({
                 person1: person1,
                 visible: "",
                 source: articleSource,
+                score: r1.score,
+                comparative: r1.comparative,
+                negWords: negativeWords,
+                posWords: positiveWords,
+                polarity: polarity,
             });
             // Insert into Articles database
             Articles.insert(obj);
@@ -98,6 +114,17 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Times";
 
+            // Sentimient Analysis
+            var r1 = sentiment(articleInfo.text);
+
+            if (r1.score > 0){
+                polarity = "pos";
+            } else {
+                polarity = "neg";
+            }
+            var positiveWords = r1.positive;
+            var negativeWords = r1.negative;
+
             // Display link on console
             console.log(articleLink);
 
@@ -125,6 +152,11 @@ Meteor.methods({
                 person1: person1,
                 visible: "",
                 source: articleSource,
+                score: r1.score,
+                comparative: r1.comparative,
+                negWords: negativeWords,
+                posWords: positiveWords,
+                polarity: polarity,
             });
             // Insert into Articles database
             Articles.insert(obj);
@@ -147,6 +179,17 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Independent";
 
+            // Sentimient Analysis
+            var r1 = sentiment(articleInfo.text);
+
+            if (r1.score > 0){
+                polarity = "pos";
+            } else {
+                polarity = "neg";
+            }
+            var positiveWords = r1.positive;
+            var negativeWords = r1.negative;
+
             // Display link on console
             console.log(articleLink);
 
@@ -174,6 +217,11 @@ Meteor.methods({
                 person1: person1,
                 visible: "",
                 source: articleSource,
+                score: r1.score,
+                comparative: r1.comparative,
+                negWords: negativeWords,
+                posWords: positiveWords,
+                polarity: polarity,
             });
             // Insert into Articles database
             Articles.insert(obj);
@@ -196,6 +244,17 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Examiner";
 
+            // Sentimient Analysis
+            var r1 = sentiment(articleInfo.text);
+
+            if (r1.score > 0){
+                polarity = "pos";
+            } else {
+                polarity = "neg";
+            }
+            var positiveWords = r1.positive;
+            var negativeWords = r1.negative;
+
             // Display link on console
             console.log(articleLink);
 
@@ -223,6 +282,11 @@ Meteor.methods({
                 person1: person1,
                 visible: "",
                 source: articleSource,
+                score: r1.score,
+                comparative: r1.comparative,
+                negWords: negativeWords,
+                posWords: positiveWords,
+                polarity: polarity,
             });
             // Insert into Articles database
             Articles.insert(obj);

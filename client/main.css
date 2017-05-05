@@ -138,5 +138,13 @@
 
 .myMediaPanel {
     padding: 10px;
-    border: 0.25px solid lightgrey;
+    border: 5px solid white;
+}
+
+.pos {
+    background-color: lightgreen;
+}
+
+.neg {
+    background-color: lightpink;
 }
