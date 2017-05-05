@@ -4,6 +4,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 //import { Articles } from '../../../collections/articles.js';
 
 import './home.html';
+import './articlemodal.html';
 
 Template.home.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
@@ -99,6 +100,16 @@ Template.home.events({
     },
     'click .view'() {
         Articles.find(this._id);
+        Modal.show('articlemodal', {
+            id: this._id,
+            title: this.title,
+            description: this.description,
+            text: this.text,
+            person: this.person1,
+            polarity: this.polarity,
+            source: this.source,
+            link: this.link,
+        });
         console.log(this._id);
     },
 });

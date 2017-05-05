@@ -1,0 +1,25 @@
+<template name="articlemodal">
+    <div class="modal fade">
+        <div class="modal-dialog {{polarity}}">
+            <div class="modal-content">
+
+                <div class="modal-header {{polarity}}">
+                    <h3 class="modal-title">{{title}}</h3>
+                </div>
+
+                <div class="modal-body">
+                    <blockquote>{{description}}</blockquote>
+                    <a href="{{link}}" target="_blank">Click here to read this article on the {{source}} website</a>
+                    <p>{{text}}</p>
+                    <hr>
+                    <h4>Persons Named: {{person}}</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
