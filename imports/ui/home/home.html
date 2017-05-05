@@ -1,49 +1,67 @@
 <template name="home">
     {{>navbar}}
     {{>sidebar}}
-    <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+    <!-- Main content offsetted to allow for sidebar-->
+    <div class="query_page FlexboxMain col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <!-- Page Title and Other Info -->
         <div class="row">
             <div class="col-md-12">
-                <h1>Homepage</h1>
-                <button type="" class="runsearch btn btn-block btn-warning">Refresh Database</button>
-                <p>Search for a person of interest here and Irish media articles about them will be returned...</p>
-                <form class="new-search form-group">
-                    <input type="text" class="form-control" name="text" placeholder="Search for people..." />
-                    <button type="submit" class="btn btn-block btn-primary">Search</button>
+                <div class="page-header">
+                    <h1>Martello Filters</h1>
+                    <p>The filters area allows you to narrow down the articles stored in the database by source, date, person or sentiment</p>
+                    <button type="button" class="runsearch btn btn-warning">Refresh Database</button>
                     <label class="hide-completed pull-right">
                         <input type="checkbox" />
                         Hide Completed
                     </label>
-                    <form class="form-inline">
-                        <label class="rte">
-                            <input type="checkbox" />RTE
-                        </label>
-                        <label class="independent">
-                            <input type="checkbox" />Irish Independent
-                        </label>
-                        <label class="times">
-                            <input type="checkbox" />Irish Times
-                        </label>
-                        <label class="examiner">
-                            <input type="checkbox" />Irish Examiner
-                        </label>
-                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Input Form Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Search Box -->
+                <form class="new-search form-group input-group">
+                    <input type="text" class="form-control" name="text" placeholder="Search for people..." />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </span>
+                </form>
+                <!-- Sources Checkboxes -->
+                <form class="form-inline">
+                    <label class="rte checkbox-inline">
+                        <input type="checkbox" />RTE
+                    </label>
+                    <label class="independent checkbox-inline">
+                        <input type="checkbox" />Irish Independent
+                    </label>
+                    <label class="times checkbox-inline">
+                        <input type="checkbox" />Irish Times
+                    </label>
+                    <label class="examiner checkbox-inline">
+                        <input type="checkbox" />Irish Examiner
+                    </label>
                 </form>
             </div>
         </div>
-        <div class="row">
+        <hr>
+        <!-- Results Row -->
+        <div class="row FlexboxRows">
             {{#each articles}}
-            <div class="col-md-12 media" style="{{visible}} background-color: lightgray">
-                <div class="media-left">
+            <div class="col-md-6 media myMediaPanel" style="{{visible}}">
+                <h3 class="media-heading">{{title}}</h3>
+                <!-- Thumbnail Content -->
+                <div class="media-body">
+                    <h4>{{description}}</h4>
+                </div>
+                <div class="media-right">
+                    <!-- Thumbnail Image -->
                     <a href="{{link}}">
-                        <img class="media-object" src="{{image}}" alt="..." width="80px">
+                        <img class="media-object" src="{{image}}" alt="..." width="140px" height="80px">
                     </a>
                 </div>
-                <div class="media-body">
-                    <h3 class="media-heading">{{title}}</h3>
-                    <p>{{description}}</p>
-                    <h4>{{source}}</h4>
-                    <input type="checkbox" checked="{{checked}}" class="toggle-checked" /><span>Hide</span>
+                <div class="media-bottom">
+                    <h5>Source: {{source}}</h5>
                 </div>
             </div>
             {{/each}}

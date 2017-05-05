@@ -26,9 +26,23 @@ FlowRouter.route('/', {
     }
 });
 
+// Route for Filter
+FlowRouter.route('/filter', {
+    action: function() {
+        BlazeLayout.render("body", {content: "home"});
+    }
+});
+
 // Route for Trending
 FlowRouter.route('/trending', {
     action: function() {
         BlazeLayout.render("body", {content: "trending"});
+    }
+});
+
+// Route for Archive
+FlowRouter.route('/archive', {
+    action: function() {
+        BlazeLayout.render("body", {content: "archive"});
     }
 });

@@ -5,6 +5,8 @@ import '../imports/ui/home/home.js';
 import '../imports/ui/report/report.html';
 import '../imports/ui/home/home.html';
 import '../imports/ui/trending/trending.html';
+import '../imports/ui/archive/archive.html';
+
 /*
 IMPORTS HERE...
     1) You have to import the template you want to use...

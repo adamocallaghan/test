@@ -120,3 +120,23 @@
     text-transform: uppercase;
     font-size: 1.2em;
 }
+
+.FlexboxBody {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.FlexboxMain {
+    flex: 1 0 auto;
+}
+
+.FlexboxRows {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.myMediaPanel {
+    padding: 10px;
+    border: 0.25px solid lightgrey;
+}

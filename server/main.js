@@ -62,7 +62,7 @@ Meteor.methods({
 
             // Sorting empty images (Irish Times & The Examiner have none)
             if (articleImage == "") {
-                articleImage = "https://www.heighpubs.org/articleIcons/0423042031704article-icon[1].png"
+                articleImage = "http://www.bmt-ag.com/img/News.gif";
             }
 
             // Stored the info in an object
@@ -111,7 +111,7 @@ Meteor.methods({
 
             // Sorting empty images (Irish Times & The Examiner have none)
             if (articleImage == "") {
-                articleImage = "https://www.heighpubs.org/articleIcons/0423042031704article-icon[1].png"
+                articleImage = "http://www.bmt-ag.com/img/News.gif";
             }
 
             // Stored the info in an object
@@ -160,7 +160,7 @@ Meteor.methods({
 
             // Sorting empty images (Irish Times & The Examiner have none)
             if (articleImage == "") {
-                articleImage = "https://www.heighpubs.org/articleIcons/0423042031704article-icon[1].png"
+                articleImage = "http://www.bmt-ag.com/img/News.gif";
             }
 
             // Stored the info in an object
@@ -209,7 +209,7 @@ Meteor.methods({
 
             // Sorting empty images (Irish Times & The Examiner have none)
             if (articleImage == "") {
-                articleImage = "https://www.heighpubs.org/articleIcons/0423042031704article-icon[1].png"
+                articleImage = "http://www.bmt-ag.com/img/News.gif";
             }
 
             // Stored the info in an object
