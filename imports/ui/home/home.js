@@ -96,5 +96,9 @@ Template.home.events({
     },
     'change .examiner input' (event, instance) {
         instance.state.set('examiner', event.target.checked);
-    }
+    },
+    'click .view'() {
+        Articles.find(this._id);
+        console.log(this._id);
+    },
 });
