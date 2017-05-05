@@ -109,6 +109,8 @@ Template.home.events({
             polarity: this.polarity,
             source: this.source,
             link: this.link,
+            posWords: this.posWords.length,
+            negWords: this.negWords.length,
         });
         console.log(this._id);
     },
