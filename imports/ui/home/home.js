@@ -30,8 +30,8 @@ Template.home.events({
 
         // Server call
         Meteor.call('runQuery', mySearchTerm, function(error, result) {
-            Session.set('searchResults', result);
-            console.log(result);
+            //Session.set('searchResults', result);
+            //console.log(result);
         });
     },
 });
