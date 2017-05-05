@@ -1,13 +1,17 @@
 import { Template } from 'meteor/templating';
 
-import { Queries } from '../../api/queries.js';
+//import { Articles } from '../../../collections/articles.js';
 
 import './home.html';
 
 Template.home.helpers({
     searchResults: function () {
         return Session.get('searchResults');
-    }
+    },
+    articles() {
+        // Return all articles
+        return Articles.find({}, { sort: { date: -1 } });
+    },
 });
 
 Template.home.events({
