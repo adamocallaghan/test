@@ -2,7 +2,6 @@
     <div class="modal fade">
         <div class="modal-dialog {{polarity}}">
             <div class="modal-content">
-
                 <div class="modal-header {{polarity}}">
                     <h3 class="modal-title">{{title}}</h3>
                 </div>
@@ -18,6 +17,14 @@
                         <li>Positive Words: {{posWords}}</li>
                         <li>Negative Words: {{negWords}}</li>
                     </ul>
+                    <div id="piecontainer">
+                        <div id="" class="cover" style="transform: rotate(0deg);">
+                            <div id="part1" class="pie" style="transform: rotate(180deg)"></div>
+                        </div>
+                        <div id="" class="cover" style="transform: rotate(180deg)">
+                            <div id="part2" class="pie" style="transform: rotate(180deg)"></div>
+                        </div>
+                    </div>
                     <hr>
                     <p>{{text}}</p>
                 </div>
