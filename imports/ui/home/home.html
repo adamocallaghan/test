@@ -2,15 +2,38 @@
     {{>navbar}}
     {{>sidebar}}
     <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-        <h1>Homepage</h1>
-        <p>Search for a person of interest here and Irish media articles about them will be returned...</p>
-        <form class="new-search form-group">
-            <input type="text" class="form-control" name="text" placeholder="Search for people..." />
-            <button type="submit" class="btn btn-block">Search</button>
-        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Homepage</h1>
+                <button type="" class="runsearch btn btn-block btn-warning">Refresh Database</button>
+                <p>Search for a person of interest here and Irish media articles about them will be returned...</p>
+                <form class="new-search form-group">
+                    <input type="text" class="form-control" name="text" placeholder="Search for people..." />
+                    <button type="submit" class="btn btn-block btn-primary">Search</button>
+                    <label class="hide-completed pull-right">
+                        <input type="checkbox" />
+                        Hide Completed
+                    </label>
+                    <form class="form-inline">
+                        <label class="rte">
+                            <input type="checkbox" />RTE
+                        </label>
+                        <label class="independent">
+                            <input type="checkbox" />Irish Independent
+                        </label>
+                        <label class="times">
+                            <input type="checkbox" />Irish Times
+                        </label>
+                        <label class="examiner">
+                            <input type="checkbox" />Irish Examiner
+                        </label>
+                    </form>
+                </form>
+            </div>
+        </div>
         <div class="row">
             {{#each articles}}
-            <div class="col-md-6 media" style="{{visible}}">
+            <div class="col-md-12 media" style="{{visible}} background-color: lightgray">
                 <div class="media-left">
                     <a href="{{link}}">
                         <img class="media-object" src="{{image}}" alt="..." width="80px">
@@ -20,6 +43,7 @@
                     <h3 class="media-heading">{{title}}</h3>
                     <p>{{description}}</p>
                     <h4>{{source}}</h4>
+                    <input type="checkbox" checked="{{checked}}" class="toggle-checked" /><span>Hide</span>
                 </div>
             </div>
             {{/each}}

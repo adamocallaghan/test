@@ -33,10 +33,12 @@ Meteor.methods({
         // Empty the Articles DB
         Articles.remove({});
 
+        // ========== RTE.ie scraping... ==========
+        console.log("Scraping RTE.ie Data");
+
         // RTE.ie - Transform Retrieve Data into Usable Information
         for (i=0; i<websiteData.items.length; i++) {
-            // RTE scraping...
-            console.log("Scraping RTE.ie Data");
+
             // === NLP Processing ===
             articleTitle = websiteData.items[i].title; // Get the title
             articleDate = websiteData.items[i].pubDate; // Get the date
@@ -47,6 +49,9 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "RTE";
 
+            // Display link on console
+            console.log(articleLink);
+
             // Get the first person the article mentions
             if (articlePeople.length!=0) {
                 person1 = articlePeople[0].text;
@@ -77,11 +82,12 @@ Meteor.methods({
             // Add the object to position i in array
             //returnThis[i] = obj;
         }
+        // ========== Irish Times scraping... ==========
+        console.log("Scraping Irish Times Data");
 
         // Irish Times - Transform Retrieve Data into Usable Information
         for (i=0; i<irishTimesData.items.length; i++) {
-            // Irish Times scraping...
-            console.log("Scraping Irish Times Data");
+
             // === NLP Processing ===
             articleTitle = irishTimesData.items[i].title; // Get the title
             articleDate = irishTimesData.items[i].pubDate; // Get the date
@@ -92,6 +98,9 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Times";
 
+            // Display link on console
+            console.log(articleLink);
+
             // Get the first person the article mentions
             if (articlePeople.length!=0) {
                 person1 = articlePeople[0].text;
@@ -123,10 +132,11 @@ Meteor.methods({
             //returnThis[i] = obj;
         }
 
+        // ========== Irish Independent scraping... ==========
+        console.log("Scraping Irish Independent Data");
+
         // Irish Independent - Transform Retrieve Data into Usable Information
         for (i=0; i<independentData.items.length; i++) {
-            // Irish Times scraping...
-            console.log("Scraping Irish Independent Data");
             // === NLP Processing ===
             articleTitle = independentData.items[i].title; // Get the title
             articleDate = independentData.items[i].pubDate; // Get the date
@@ -137,6 +147,9 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Independent";
 
+            // Display link on console
+            console.log(articleLink);
+
             // Get the first person the article mentions
             if (articlePeople.length!=0) {
                 person1 = articlePeople[0].text;
@@ -168,10 +181,11 @@ Meteor.methods({
             //returnThis[i] = obj;
         }
 
+        // ========== Irish Examiner scraping... ==========
+        console.log("Scraping Irish Examiner Data");
+
         // Irish Examiner - Transform Retrieve Data into Usable Information
         for (i=0; i<examinerData.items.length; i++) {
-            // Irish Times scraping...
-            console.log("Scraping Irish Examiner Data");
             // === NLP Processing ===
             articleTitle = examinerData.items[i].title; // Get the title
             articleDate = examinerData.items[i].pubDate; // Get the date
@@ -181,6 +195,9 @@ Meteor.methods({
             articleInfo = Scrape.website(articleLink); // Scrape the text of the article
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Examiner";
+
+            // Display link on console
+            console.log(articleLink);
 
             // Get the first person the article mentions
             if (articlePeople.length!=0) {
