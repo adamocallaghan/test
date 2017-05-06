@@ -142,13 +142,40 @@
 }
 
 .pos {
-    border-left: 10px solid lightgreen;
+    border-left: 10px solid #5cb85c;
 }
 
 .neg {
-    border-left: 10px solid lightpink;
+    border-left: 10px solid #d9534f;
 }
 
 .neu {
-    border-left: 10px solid lightblue;
+    border-left: 10px solid #5bc0de;
+}
+
+.query_page {
+    margin-top: 50px;
+}
+.full_login_img {
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Martello_Tower_Red_Island.JPG/1280px-Martello_Tower_Red_Island.JPG) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.full_login_img .login-link-text {
+    color: white;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.panel-footer-new {
+    padding: 10px 15px;
+    /* background-color: #f5f5f5; */
+    /* border-top: 1px solid #ddd; */
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
 }

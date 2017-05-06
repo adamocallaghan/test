@@ -1,0 +1,13 @@
+<template name="login">
+    <div class="full_login_img" style="height: 100vh;">
+        {{#if currentUser}}
+        {{>navbar}}
+        {{>sidebar}}
+        {{/if}}
+        <div class="row FlexboxRows">
+            <div class="col-md-4 col-md-offset-2" style="margin-top: 100px; height: 200px;">
+                {{> loginButtons}}
+            </div>
+        </div>
+    </div>
+</template>

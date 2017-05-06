@@ -1,6 +1,7 @@
 <template name="home">
     {{>navbar}}
     {{>sidebar}}
+    {{#if currentUser}}
     <!-- Main content offsetted to allow for sidebar-->
     <div class="query_page FlexboxMain col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <!-- Page Title and Other Info -->
@@ -49,26 +50,21 @@
         <!-- Results Row -->
         <div class="row FlexboxRows">
             {{#each articles}}
-            <div class="col-md-6 media myMediaPanel" style="{{visible}}">
-                <blockquote class="{{polarity}}">
-                <h3 class="media-heading">{{title}}</h3>
-                <!-- Thumbnail Content -->
-                <div class="media-body">
-                    <h4>{{description}}</h4>
+                <div class="col-md-6 ">
+                    <div class="panel panel-{{polcolor}}" style="{{visible}}">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{title}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4>{{description}}</h4>
+                            <a href="{{link}}">Link</a>
+                            <span class="pull-right"><strong>{{source}}</strong></span>
+                        </div>
+                        <div class="btn btn-{{polcolor}} btn-block view">Panel footer</div>
+                    </div>
                 </div>
-                <div class="media-right">
-                    <!-- Thumbnail Image -->
-                    <a href="{{link}}">
-                        <img class="media-object" src="{{image}}" alt="..." width="140px" height="80px">
-                    </a>
-                </div>
-                <div class="media-bottom">
-                    <h5>Source: {{source}}</h5>
-                    <button class="btn btn-success view">View</button>
-                </div>
-                </blockquote>
-            </div>
             {{/each}}
         </div>
     </div>
+    {{/if}}
 </template>

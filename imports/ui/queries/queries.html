@@ -1,7 +1,8 @@
 <template name="queries">
     {{>navbar}}
     {{>sidebar}}
-    <div class="container main-content col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-2">
+    {{#if currentUser }}
+    <div class="query_page main-content col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-2">
     <header>
         <h1>Queries <span class="badge">{{incompleteCount}}</span></h1>
 
@@ -22,4 +23,5 @@
         {{/each}}
     </div>
     </div>
+    {{/if}}
 </template>

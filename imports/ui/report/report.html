@@ -1,8 +1,10 @@
 <template name="report">
     {{>navbar}}
     {{>sidebar}}
+    {{#if currentUser }}
     <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <h1>Reports</h1>
         <p>Lorem ipsum...</p>
     </div>
+    {{/if}}
 </template>

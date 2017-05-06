@@ -6,6 +6,7 @@ import '../imports/ui/report/report.html';
 import '../imports/ui/home/home.html';
 import '../imports/ui/trending/trending.html';
 import '../imports/ui/archive/archive.html';
+import '../imports/ui/login/login.html';
 
 /*
 IMPORTS HERE...

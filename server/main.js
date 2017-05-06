@@ -31,7 +31,7 @@ Meteor.methods({
         returnThis = new Array();
 
         // Empty the Articles DB
-        Articles.remove({});
+        //Articles.remove({});
 
         // ========== RTE.ie scraping... ==========
         console.log("Scraping RTE.ie Data");
@@ -49,54 +49,71 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "RTE";
 
-            // Sentimient Analysis
-            var r1 = sentiment(articleInfo.text);
+            var exists = Articles.findOne({title: articleTitle});
 
-            if (r1.score >= 1){
-                polarity = "pos";
-            } else if (r1.score <= -1) {
-                polarity = "neg";
-            } else if (r1.score <1 && r1.score >-1) {
-                polarity = "neu";
+            // Checking to see if the article title already exists in the DB
+
+            // If it does: don't do anything...
+            if (exists != null) {
+                console.log("Found in DB: Ignoring");
             }
-            var positiveWords = r1.positive;
-            var negativeWords = r1.negative;
+            // Else keep going and add it to the DB...
+            else {
+                console.log("Not found: Adding to DB");
 
-            // Display link on console
-            console.log(articleLink);
+                // Sentimient Analysis
+                var r1 = sentiment(articleInfo.text);
 
-            // Get the first person the article mentions
-            if (articlePeople.length!=0) {
-                person1 = articlePeople[0].text;
-            }
+                if (r1.score >= 1){
+                    polarity = "pos";
+                    polcolor = "success";
+                } else if (r1.score <= -1) {
+                    polarity = "neg";
+                    polcolor = "danger";
+                } else if (r1.score <1 && r1.score >-1) {
+                    polarity = "neu";
+                    polcolor = "info";
+                }
+                var positiveWords = r1.positive;
+                var negativeWords = r1.negative;
 
-            // Date info retrieved
-            retrievalDate = new Date;
+                // Display link on console
+                console.log(articleLink);
 
-            // Sorting empty images (Irish Times & The Examiner have none)
-            if (articleImage == "") {
-                articleImage = "http://www.bmt-ag.com/img/News.gif";
-            }
+                // Get the first person the article mentions
+                if (articlePeople.length!=0) {
+                    person1 = articlePeople[0].text;
+                }
 
-            // Stored the info in an object
-            obj = new Object({
-                title: articleTitle,
-                date: articleDate,
-                description: articleDescription,
-                image: articleImage,
-                link: articleLink,
-                text: articleInfo.text,
-                person1: person1,
-                visible: "",
-                source: articleSource,
-                score: r1.score,
-                comparative: r1.comparative,
-                negWords: negativeWords,
-                posWords: positiveWords,
-                polarity: polarity,
-            });
-            // Insert into Articles database
-            Articles.insert(obj);
+                // Date info retrieved
+                retrievalDate = new Date;
+
+                // Sorting empty images (Irish Times & The Examiner have none)
+                if (articleImage == "") {
+                    articleImage = "http://www.bmt-ag.com/img/News.gif";
+                }
+
+                // Stored the info in an object
+                obj = new Object({
+                    title: articleTitle,
+                    date: articleDate,
+                    description: articleDescription,
+                    image: articleImage,
+                    link: articleLink,
+                    text: articleInfo.text,
+                    person1: person1,
+                    visible: "",
+                    source: articleSource,
+                    score: r1.score,
+                    comparative: r1.comparative,
+                    negWords: negativeWords,
+                    posWords: positiveWords,
+                    polarity: polarity,
+                    polcolor: polcolor,
+                });
+                // Insert into Articles database
+                Articles.insert(obj);
+            };
             // Add the object to position i in array
             //returnThis[i] = obj;
         }
@@ -116,54 +133,68 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Times";
 
-            // Sentimient Analysis
-            var r1 = sentiment(articleInfo.text);
+            // Checking to see if the article title already exists in the DB
 
-            if (r1.score >= 1){
-                polarity = "pos";
-            } else if (r1.score <= -1) {
-                polarity = "neg";
-            } else if (r1.score <1 && r1.score >-1) {
-                polarity = "neu";
+            // If it does: don't do anything...
+            if (exists != null) {
+                console.log("Found in DB: Ignoring");
             }
-            var positiveWords = r1.positive;
-            var negativeWords = r1.negative;
+            // Else keep going and add it to the DB...
+            else {
+                console.log("Not found: Adding to DB");
+                // Sentimient Analysis
+                var r1 = sentiment(articleInfo.text);
 
-            // Display link on console
-            console.log(articleLink);
+                if (r1.score >= 1) {
+                    polarity = "pos";
+                    polcolor = "success";
+                } else if (r1.score <= -1) {
+                    polarity = "neg";
+                    polcolor = "danger";
+                } else if (r1.score < 1 && r1.score > -1) {
+                    polarity = "neu";
+                    polcolor = "info";
+                }
+                var positiveWords = r1.positive;
+                var negativeWords = r1.negative;
 
-            // Get the first person the article mentions
-            if (articlePeople.length!=0) {
-                person1 = articlePeople[0].text;
-            }
+                // Display link on console
+                console.log(articleLink);
 
-            // Date info retrieved
-            retrievalDate = new Date;
+                // Get the first person the article mentions
+                if (articlePeople.length != 0) {
+                    person1 = articlePeople[0].text;
+                }
 
-            // Sorting empty images (Irish Times & The Examiner have none)
-            if (articleImage == "") {
-                articleImage = "http://www.bmt-ag.com/img/News.gif";
-            }
+                // Date info retrieved
+                retrievalDate = new Date;
 
-            // Stored the info in an object
-            obj = new Object({
-                title: articleTitle,
-                date: articleDate,
-                description: articleDescription,
-                image: articleImage,
-                link: articleLink,
-                text: articleInfo.text,
-                person1: person1,
-                visible: "",
-                source: articleSource,
-                score: r1.score,
-                comparative: r1.comparative,
-                negWords: negativeWords,
-                posWords: positiveWords,
-                polarity: polarity,
-            });
-            // Insert into Articles database
-            Articles.insert(obj);
+                // Sorting empty images (Irish Times & The Examiner have none)
+                if (articleImage == "") {
+                    articleImage = "http://www.bmt-ag.com/img/News.gif";
+                }
+
+                // Stored the info in an object
+                obj = new Object({
+                    title: articleTitle,
+                    date: articleDate,
+                    description: articleDescription,
+                    image: articleImage,
+                    link: articleLink,
+                    text: articleInfo.text,
+                    person1: person1,
+                    visible: "",
+                    source: articleSource,
+                    score: r1.score,
+                    comparative: r1.comparative,
+                    negWords: negativeWords,
+                    posWords: positiveWords,
+                    polarity: polarity,
+                    polcolor: polcolor,
+                });
+                // Insert into Articles database
+                Articles.insert(obj);
+            };
             // Add the object to position i in array
             //returnThis[i] = obj;
         }
@@ -183,54 +214,68 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Independent";
 
-            // Sentimient Analysis
-            var r1 = sentiment(articleInfo.text);
+            // Checking to see if the article title already exists in the DB
 
-            if (r1.score >= 1){
-                polarity = "pos";
-            } else if (r1.score <= -1) {
-                polarity = "neg";
-            } else if (r1.score <1 && r1.score >-1) {
-                polarity = "neu";
+            // If it does: don't do anything...
+            if (exists != null) {
+                console.log("Found in DB: Ignoring");
             }
-            var positiveWords = r1.positive;
-            var negativeWords = r1.negative;
+            // Else keep going and add it to the DB...
+            else {
+                console.log("Not found: Adding to DB");
+                // Sentimient Analysis
+                var r1 = sentiment(articleInfo.text);
 
-            // Display link on console
-            console.log(articleLink);
+                if (r1.score >= 1) {
+                    polarity = "pos";
+                    polcolor = "success";
+                } else if (r1.score <= -1) {
+                    polarity = "neg";
+                    polcolor = "danger";
+                } else if (r1.score < 1 && r1.score > -1) {
+                    polarity = "neu";
+                    polcolor = "info";
+                }
+                var positiveWords = r1.positive;
+                var negativeWords = r1.negative;
 
-            // Get the first person the article mentions
-            if (articlePeople.length!=0) {
-                person1 = articlePeople[0].text;
-            }
+                // Display link on console
+                console.log(articleLink);
 
-            // Date info retrieved
-            retrievalDate = new Date;
+                // Get the first person the article mentions
+                if (articlePeople.length != 0) {
+                    person1 = articlePeople[0].text;
+                }
 
-            // Sorting empty images (Irish Times & The Examiner have none)
-            if (articleImage == "") {
-                articleImage = "http://www.bmt-ag.com/img/News.gif";
-            }
+                // Date info retrieved
+                retrievalDate = new Date;
 
-            // Stored the info in an object
-            obj = new Object({
-                title: articleTitle,
-                date: articleDate,
-                description: articleDescription,
-                image: articleImage,
-                link: articleLink,
-                text: articleInfo.text,
-                person1: person1,
-                visible: "",
-                source: articleSource,
-                score: r1.score,
-                comparative: r1.comparative,
-                negWords: negativeWords,
-                posWords: positiveWords,
-                polarity: polarity,
-            });
-            // Insert into Articles database
-            Articles.insert(obj);
+                // Sorting empty images (Irish Times & The Examiner have none)
+                if (articleImage == "") {
+                    articleImage = "http://www.bmt-ag.com/img/News.gif";
+                }
+
+                // Stored the info in an object
+                obj = new Object({
+                    title: articleTitle,
+                    date: articleDate,
+                    description: articleDescription,
+                    image: articleImage,
+                    link: articleLink,
+                    text: articleInfo.text,
+                    person1: person1,
+                    visible: "",
+                    source: articleSource,
+                    score: r1.score,
+                    comparative: r1.comparative,
+                    negWords: negativeWords,
+                    posWords: positiveWords,
+                    polarity: polarity,
+                    polcolor: polcolor,
+                });
+                // Insert into Articles database
+                Articles.insert(obj);
+            };
             // Add the object to position i in array
             //returnThis[i] = obj;
         }
@@ -250,56 +295,70 @@ Meteor.methods({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Examiner";
 
-            // Sentimient Analysis
-            var r1 = sentiment(articleInfo.text);
+            // Checking to see if the article title already exists in the DB
 
-            if (r1.score >= 1){
-                polarity = "pos";
-            } else if (r1.score <= -1) {
-                polarity = "neg";
-            } else if (r1.score <1 && r1.score >-1) {
-                polarity = "neu";
+            // If it does: don't do anything...
+            if (exists != null) {
+                console.log("Found in DB: Ignoring");
             }
-            var positiveWords = r1.positive;
-            var negativeWords = r1.negative;
+            // Else keep going and add it to the DB...
+            else {
+                console.log("Not found: Adding to DB");
+                // Sentimient Analysis
+                var r1 = sentiment(articleInfo.text);
 
-            // Display link on console
-            console.log(articleLink);
+                if (r1.score >= 1) {
+                    polarity = "pos";
+                    polcolor = "success";
+                } else if (r1.score <= -1) {
+                    polarity = "neg";
+                    polcolor = "danger";
+                } else if (r1.score < 1 && r1.score > -1) {
+                    polarity = "neu";
+                    polcolor = "info";
+                }
+                var positiveWords = r1.positive;
+                var negativeWords = r1.negative;
 
-            // Get the first person the article mentions
-            if (articlePeople.length!=0) {
-                person1 = articlePeople[0].text;
-            }
+                // Display link on console
+                console.log(articleLink);
 
-            // Date info retrieved
-            retrievalDate = new Date;
+                // Get the first person the article mentions
+                if (articlePeople.length != 0) {
+                    person1 = articlePeople[0].text;
+                }
 
-            // Sorting empty images (Irish Times & The Examiner have none)
-            if (articleImage == "") {
-                articleImage = "http://www.bmt-ag.com/img/News.gif";
-            }
+                // Date info retrieved
+                retrievalDate = new Date;
 
-            // Stored the info in an object
-            obj = new Object({
-                title: articleTitle,
-                date: articleDate,
-                description: articleDescription,
-                image: articleImage,
-                link: articleLink,
-                text: articleInfo.text,
-                person1: person1,
-                visible: "",
-                source: articleSource,
-                score: r1.score,
-                comparative: r1.comparative,
-                negWords: negativeWords,
-                posWords: positiveWords,
-                polarity: polarity,
-            });
-            // Insert into Articles database
-            Articles.insert(obj);
-            // Add the object to position i in array
-            //returnThis[i] = obj;
+                // Sorting empty images (Irish Times & The Examiner have none)
+                if (articleImage == "") {
+                    articleImage = "http://www.bmt-ag.com/img/News.gif";
+                }
+
+                // Stored the info in an object
+                obj = new Object({
+                    title: articleTitle,
+                    date: articleDate,
+                    description: articleDescription,
+                    image: articleImage,
+                    link: articleLink,
+                    text: articleInfo.text,
+                    person1: person1,
+                    visible: "",
+                    source: articleSource,
+                    score: r1.score,
+                    comparative: r1.comparative,
+                    negWords: negativeWords,
+                    posWords: positiveWords,
+                    polarity: polarity,
+                    polcolor: polcolor,
+                });
+                // Insert into Articles database
+                Articles.insert(obj);
+                // Add the object to position i in array
+                //returnThis[i] = obj;
+            };
         }
 
         // return the array for Session variable
