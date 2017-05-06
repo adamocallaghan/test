@@ -30,3 +30,4 @@ session
 art1sec8:sentiment
 peppelg:bootstrap-3-modal
 chart:chart
+percolate:synced-cron

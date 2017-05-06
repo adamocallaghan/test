@@ -4,17 +4,23 @@ import { Mongo } from 'meteor/mongo';
 import nlp from 'nlp_compromise';
 
 Meteor.startup(() => {
-  // code to run on server at startup
+    // Start chron job when Meteor server starts up
+    SyncedCron.start();
 });
 
 import '../imports/api/tasks.js';
 import '../imports/api/queries.js';
 //import '../collections/articles.js';
 
-Meteor.methods({
-    'runQuery': function (mySearchTerm) {
+SyncedCron.add({
+    name: 'Scraping Sources, Parsing Data, and Inserting to Database',
+    schedule: function(parser) {
+        // parser is a later.parse object
+        return parser.text('every 15 mins');
+    },
+    job: function () {
         // Process starting...
-        console.log("Server-side Scrape & NLP: "+ mySearchTerm)
+        console.log("Server-side Scrape & NLP");
 
         // Scrape main Irish websites
         websiteData = Scrape.feed("http://www.rte.ie/news/rss/news-headlines.xml");
@@ -84,6 +90,9 @@ Meteor.methods({
                 if (articlePeople.length!=0) {
                     person1 = articlePeople[0].text;
                 }
+                if (articlePeople.length>1) {
+                    person2 = articlePeople[1].text;
+                }
 
                 // Date info retrieved
                 retrievalDate = new Date;
@@ -102,6 +111,7 @@ Meteor.methods({
                     link: articleLink,
                     text: articleInfo.text,
                     person1: person1,
+                    person2: person2,
                     visible: "",
                     source: articleSource,
                     score: r1.score,
@@ -165,6 +175,9 @@ Meteor.methods({
                 if (articlePeople.length != 0) {
                     person1 = articlePeople[0].text;
                 }
+                if (articlePeople.length>1) {
+                    person2 = articlePeople[1].text;
+                }
 
                 // Date info retrieved
                 retrievalDate = new Date;
@@ -183,6 +196,7 @@ Meteor.methods({
                     link: articleLink,
                     text: articleInfo.text,
                     person1: person1,
+                    person2: person2,
                     visible: "",
                     source: articleSource,
                     score: r1.score,
@@ -246,6 +260,9 @@ Meteor.methods({
                 if (articlePeople.length != 0) {
                     person1 = articlePeople[0].text;
                 }
+                if (articlePeople.length>1) {
+                    person2 = articlePeople[1].text;
+                }
 
                 // Date info retrieved
                 retrievalDate = new Date;
@@ -264,6 +281,7 @@ Meteor.methods({
                     link: articleLink,
                     text: articleInfo.text,
                     person1: person1,
+                    person2: person2,
                     visible: "",
                     source: articleSource,
                     score: r1.score,
@@ -327,6 +345,9 @@ Meteor.methods({
                 if (articlePeople.length != 0) {
                     person1 = articlePeople[0].text;
                 }
+                if (articlePeople.length>1) {
+                    person2 = articlePeople[1].text;
+                }
 
                 // Date info retrieved
                 retrievalDate = new Date;
@@ -345,6 +366,7 @@ Meteor.methods({
                     link: articleLink,
                     text: articleInfo.text,
                     person1: person1,
+                    person2: person2,
                     visible: "",
                     source: articleSource,
                     score: r1.score,

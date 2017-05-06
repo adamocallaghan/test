@@ -23,7 +23,14 @@ Template.home.helpers({
         }
         if (instance.state.get('searchTerm')) {
             // If hide completed is checked, filter articles
-            return Articles.find({ person1: Template.instance().state.get('searchTerm')}, { sort: { createdAt: -1 } });
+            return Articles.find({
+                $or: [
+                    {person2: Template.instance().state.get('searchTerm')},
+                    {person1: Template.instance().state.get('searchTerm')},
+                    {text : {$regex : ".*"+Template.instance().state.get('searchTerm')+".*"}},
+                    { sort: { createdAt: -1 } }
+                ]
+            });
         }
         if (instance.state.get('rte')) {
             // If source RTE is checked, filter articles
@@ -111,6 +118,7 @@ Template.home.events({
             description: this.description,
             text: this.text,
             person: this.person1,
+            person2: this.person2,
             polarity: this.polarity,
             source: this.source,
             link: this.link,
@@ -118,6 +126,8 @@ Template.home.events({
             negWords: this.negWords.length,
             posPerc: posPerc,
             negPerc: negPerc,
+            score: this.score,
+            comparative: this.comparative,
         });
         console.log(this._id);
     },

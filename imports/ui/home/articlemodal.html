@@ -10,22 +10,20 @@
                     <blockquote>{{description}}</blockquote>
                     <a href="{{link}}" target="_blank">Click here to read this article on the {{source}} website</a>
                     <hr>
-                    <h4>Persons Named: {{person}}</h4>
+                    <h4>Persons Named: {{person}}, {{person2}}</h4>
                     <hr>
-                    <h4>Sentiment Breakdown: </h4>
-                    <ul>
-                        <li>Positive Words: {{posWords}}</li>
-                        <li>Negative Words: {{negWords}}</li>
-                    </ul>
+                    <h4>Sentiment Breakdown</h4>
+                    <p><strong>Total Sentiment Score: </strong><span>{{score}}</span></p>
+                    <p><strong>Comparative Sentiment: </strong><span>{{comparative}}</span></p>
                     <!-- Progress Bars -->
                     <div class="progress">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{posPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{posPerc}}%">
-                            <span class="sr-only">{{posPerc}}% Complete (success)</span>
+                            Positive Words: {{posWords}}<span class="sr-only">{{posPerc}}% Complete (success)</span>
                         </div>
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{negPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{negPerc}}%">
-                            <span class="sr-only">{{negPerc}}% Complete (danger)</span>
+                            Negative Words: {{negWords}}<span class="sr-only">{{negPerc}}% Complete (danger)</span>
                         </div>
                     </div>
                     <hr>
