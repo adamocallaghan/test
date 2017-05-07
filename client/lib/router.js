@@ -29,7 +29,7 @@ FlowRouter.route('/report', {
 // Route for Homepage
 FlowRouter.route('/', {
     action: function() {
-        BlazeLayout.render("body", {content: "home"});
+        BlazeLayout.render("body", {content: "overview"});
     }
 });
 

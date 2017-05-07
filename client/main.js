@@ -4,6 +4,7 @@ import '../imports/ui/queries/queries.js';
 import '../imports/ui/home/home.js';
 import '../imports/ui/report/report.html';
 import '../imports/ui/home/home.html';
+import '../imports/ui/overview/overview.js';
 import '../imports/ui/trending/trending.html';
 import '../imports/ui/archive/archive.html';
 import '../imports/ui/login/login.html';

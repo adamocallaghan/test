@@ -102,10 +102,14 @@ SyncedCron.add({
                     articleImage = "http://www.bmt-ag.com/img/News.gif";
                 }
 
+                // Get a readable date
+                cleanDate = articleDate.toDateString();
+
                 // Stored the info in an object
                 obj = new Object({
                     title: articleTitle,
                     date: articleDate,
+                    cleanDate: cleanDate,
                     description: articleDescription,
                     image: articleImage,
                     link: articleLink,
@@ -187,10 +191,14 @@ SyncedCron.add({
                     articleImage = "http://www.bmt-ag.com/img/News.gif";
                 }
 
+                // Get a readable date
+                cleanDate = articleDate.toDateString();
+
                 // Stored the info in an object
                 obj = new Object({
                     title: articleTitle,
                     date: articleDate,
+                    cleanDate: cleanDate,
                     description: articleDescription,
                     image: articleImage,
                     link: articleLink,
@@ -272,10 +280,14 @@ SyncedCron.add({
                     articleImage = "http://www.bmt-ag.com/img/News.gif";
                 }
 
+                // Get a readable date
+                cleanDate = articleDate.toDateString();
+
                 // Stored the info in an object
                 obj = new Object({
                     title: articleTitle,
                     date: articleDate,
+                    cleanDate: cleanDate,
                     description: articleDescription,
                     image: articleImage,
                     link: articleLink,
@@ -357,10 +369,14 @@ SyncedCron.add({
                     articleImage = "http://www.bmt-ag.com/img/News.gif";
                 }
 
+                // Get a readable date
+                cleanDate = articleDate.toDateString();
+
                 // Stored the info in an object
                 obj = new Object({
                     title: articleTitle,
                     date: articleDate,
+                    cleanDate: cleanDate,
                     description: articleDescription,
                     image: articleImage,
                     link: articleLink,
