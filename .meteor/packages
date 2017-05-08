@@ -33,3 +33,4 @@ chart:chart
 percolate:synced-cron
 maazalik:highcharts
 momentjs:moment
+practicalmeteor:mocha
