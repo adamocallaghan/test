@@ -4,7 +4,34 @@
     {{#if currentUser }}
         <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
             <h1>Overview</h1>
-            <p>Lorem ipsum...</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non iaculis purus, eu porta turpis. Praesent dui dolor, tempor id mauris nec, aliquet aliquet risus. Vivamus urna purus, vulputate quis pellentesque quis, ullamcorper eu risus. Fusce convallis, augue eu varius fermentum, nisl dolor dapibus justo, venenatis suscipit felis mauris id purus. Vestibulum nec tristique nibh.</p>
+            <ul>
+                <li>RTE.ie: {{countSources.key1}}</li>
+                <li>Irish Times: {{countSources.key2}}</li>
+                <li>Irish Independent: {{countSources.key3}}</li>
+                <li>Irish Examiner: {{countSources.key4}}</li>
+            </ul>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Sentiment Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each articles}}
+                    <tr class="{{polcolor}}">
+                        <td>{{source}}</td>
+                        <td>{{title}}</td>
+                        <td>{{description}}</td>
+                        <td>{{score}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     {{/if}}
 </template>

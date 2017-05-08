@@ -26,4 +26,11 @@ Template.overview.helpers({
         // Return all articles
         return Articles.find({}, { sort: { date: -1 } });
     },
+    countSources() {
+        rteCount = Articles.find({source: "RTE"}, { sort: { date: -1 } }).count();
+        timesCount = Articles.find({source: "Irish Times"}, { sort: { date: -1 } }).count();
+        indCount = Articles.find({source: "Irish Independent"}, { sort: { date: -1 } }).count();
+        examCount = Articles.find({source: "Irish Times"}, { sort: { date: -1 } }).count();
+        return {key1: rteCount, key2: timesCount, key3: indCount, key4: examCount};
+    },
 });
