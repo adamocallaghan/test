@@ -127,3 +127,39 @@ Template.overview.sentimentChart = function() {
         }]
     };
 };
+
+// This Week Chart
+Template.overview.thisWeekChart = function() {
+
+    // Get today's date
+    todayISODate = new Date();
+    // Get a readable date
+    todayCleanDate = todayISODate.toDateString();
+    // Find how many arictles processed today
+    today = Articles.find({cleanDate: todayCleanDate}).count();
+
+    // Use Moment.js to find each of the last 7 days
+
+    return {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Articles Processed: Past 7 Days'
+        },
+
+        colors: ['red', 'orange', 'green', 'blue', 'purple', 'brown'],
+
+        xAxis: {
+            categories: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+        },
+
+        series: [{
+            data: [4, 3, 5, 4, 6, 1, today],
+            type: 'column',
+            colorByPoint: true
+        }]
+    };
+};
