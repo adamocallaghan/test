@@ -34,3 +34,96 @@ Template.overview.helpers({
         return {key1: rteCount, key2: timesCount, key3: indCount, key4: examCount};
     },
 });
+
+// Sources Chart
+Template.overview.topGenresChart = function() {
+    rteCount = Articles.find({source: "RTE"}, { sort: { date: -1 } }).count();
+    timesCount = Articles.find({source: "Irish Times"}, { sort: { date: -1 } }).count();
+    indCount = Articles.find({source: "Irish Independent"}, { sort: { date: -1 } }).count();
+    examCount = Articles.find({source: "Irish Times"}, { sort: { date: -1 } }).count();
+    totalCount = rteCount + timesCount + indCount + examCount;
+    percent = totalCount/100;
+    return {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: "Article Sources"
+        },
+        tooltip: {
+            pointFormat: '<b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    },
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Sources',
+            data: [
+                ['RTE',   rteCount*percent],
+                ['Irish Times',       timesCount*percent],
+                ['Irish Independent',   indCount*percent],
+                ['Irish Examiner',    examCount*percent],
+            ]
+        }]
+    };
+};
+
+// Sentiment Chart
+Template.overview.sentimentChart = function() {
+    positive = Articles.find({polarity: "pos"}, { sort: { date: -1 } }).count();
+    negative = Articles.find({polarity: "neg"}, { sort: { date: -1 } }).count();
+    neutral = Articles.find({polarity: "neu"}, { sort: { date: -1 } }).count();
+    totalCount = positive + negative + neutral;
+    percent = totalCount/100;
+    return {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: "Sentiment Breakdown"
+        },
+        colors: ['#5cb85c', '#d9534f', '#5bc0de'],
+        tooltip: {
+            pointFormat: '<b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    },
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Sources',
+            data: [
+                ['Positive',   positive],
+                ['Negative',       negative],
+                ['Neutral',   neutral],
+            ]
+        }]
+    };
+};

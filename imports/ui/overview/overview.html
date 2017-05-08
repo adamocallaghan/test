@@ -5,6 +5,14 @@
         <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
             <h1>Overview</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non iaculis purus, eu porta turpis. Praesent dui dolor, tempor id mauris nec, aliquet aliquet risus. Vivamus urna purus, vulputate quis pellentesque quis, ullamcorper eu risus. Fusce convallis, augue eu varius fermentum, nisl dolor dapibus justo, venenatis suscipit felis mauris id purus. Vestibulum nec tristique nibh.</p>
+            <div class="row">
+                <div class="col-md-6">
+                {{> highchartsHelper chartId="sources" chartWidth="100%" charHeight="100%" chartObject=topGenresChart}}
+                </div>
+                <div class="col-md-6">
+                {{> highchartsHelper chartId="sentiment" chartWidth="100%" charHeight="100%" chartObject=sentimentChart}}
+                </div>
+            </div>
             <ul>
                 <li>RTE.ie: {{countSources.key1}}</li>
                 <li>Irish Times: {{countSources.key2}}</li>
