@@ -33,6 +33,16 @@ Template.overview.helpers({
         examCount = Articles.find({source: "Irish Times"}, { sort: { date: -1 } }).count();
         return {key1: rteCount, key2: timesCount, key3: indCount, key4: examCount};
     },
+    topPos() {
+        todayISO = new Date();
+        todayClean = todayISO.toDateString();
+        return Articles.find({polarity: "pos", cleanDate: todayClean}, { sort: { score: -1 }, limit: 5 });
+    },
+    topNeg() {
+        todayISO = new Date();
+        todayClean = todayISO.toDateString();
+        return Articles.find({polarity: "neg", cleanDate: todayClean}, { sort: { score: 1 }, limit: 5 });
+    },
 });
 
 // Sources Chart
@@ -135,10 +145,40 @@ Template.overview.thisWeekChart = function() {
     todayISODate = new Date();
     // Get a readable date
     todayCleanDate = todayISODate.toDateString();
-    // Find how many arictles processed today
-    today = Articles.find({cleanDate: todayCleanDate}).count();
 
-    // Use Moment.js to find each of the last 7 days
+    // Use Moment.js to find yesterday
+    day6 = moment(todayCleanDate).subtract(1, 'day');
+    day5 = moment(todayCleanDate).subtract(2, 'day');
+    day4 = moment(todayCleanDate).subtract(3, 'day');
+    day3 = moment(todayCleanDate).subtract(4, 'day');
+    day2 = moment(todayCleanDate).subtract(5, 'day');
+    day1 = moment(todayCleanDate).subtract(6, 'day');
+
+    // Format moment to match our own cleanDate
+    day6Clean = moment(day6).format("ddd MMM DD YYYY");
+    day5Clean = moment(day5).format("ddd MMM DD YYYY");
+    day4Clean = moment(day4).format("ddd MMM DD YYYY");
+    day3Clean = moment(day3).format("ddd MMM DD YYYY");
+    day2Clean = moment(day2).format("ddd MMM DD YYYY");
+    day1Clean = moment(day1).format("ddd MMM DD YYYY");
+
+
+    // Find how many articles processed past 7 days
+    today = Articles.find({cleanDate: todayCleanDate}).count();
+    yesterday = Articles.find({cleanDate: day6Clean}).count();
+    day5Count = Articles.find({cleanDate: day5Clean}).count();
+    day4Count = Articles.find({cleanDate: day4Clean}).count();
+    day3Count = Articles.find({cleanDate: day3Clean}).count();
+    day2Count = Articles.find({cleanDate: day2Clean}).count();
+    day1Count = Articles.find({cleanDate: day1Clean}).count();
+
+    console.log(todayCleanDate);
+    console.log(day6Clean + " --- Articles: " + yesterday);
+    console.log(day5Clean + " --- Articles: " + day5Count);
+    console.log(day4Clean + " --- Articles: " + day4Count);
+    console.log(day3Clean + " --- Articles: " + day3Count);
+    console.log(day2Clean + " --- Articles: " + day2Count);
+    console.log(day1Clean + " --- Articles: " + day1Count);
 
     return {
         chart: {
@@ -157,8 +197,9 @@ Template.overview.thisWeekChart = function() {
         },
 
         series: [{
-            data: [4, 3, 5, 4, 6, 1, today],
+            data: [day1Count, day2Count, day3Count, day4Count, day5Count, yesterday, today],
             type: 'column',
+            name: 'Articles Processed',
             colorByPoint: true
         }]
     };

@@ -1,16 +1,9 @@
 <template name="query">
-    <div class="{{#if checked}}checked{{/if}} panel panel-default">
-        <div class="panel-heading">
-            <h3 class="text panel-title"><strong>{{username}}</strong> - {{text}}</h3>
-        </div>
-        <div class="panel-body">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque posuere scelerisque. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
-        </div>
-        <div class="panel-footer inline">
-            <button class="btn btn-danger delete">Delete</button>
-            <span style="padding-left: 30px">
-                <input type="checkbox" checked="{{checked}}" class="toggle-checked" /><span>Done</span>
-            </span>
-        </div>
-    </div>
+        <tr class="{{polcolor}}">
+            <td>{{source}}</td>
+            <td>{{polarity}}</td>
+            <td>{{text}}</td>
+            <td><button class="btn btn-success run">Run</button></td>
+            <td><button class="btn btn-danger delete">Delete</button></td>
+        </tr>
 </template>

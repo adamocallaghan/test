@@ -36,6 +36,8 @@ Template.queries.events({
         // Get value from form element
         const target = event.target;
         const text = target.text.value;
+        const radio = target.optionsRadios.value;
+        const pol = target.sentimentOptions.value;
         //console.log(event);
 
         // Insert a task into the collection
@@ -44,6 +46,8 @@ Template.queries.events({
             createdAt: new Date(), // current time
             owner: Meteor.userId(),
             username: Meteor.user().username,
+            source: radio,
+            polarity: pol,
         });
 
         // Clear form

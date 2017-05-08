@@ -36,7 +36,9 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/web.browser/promise-tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/web.browser/runtime-tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/web.browser/runtime.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.18.1/web.browser/export.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/chart_chart/1.0.1-beta.4/web.browser/packages/chart_chart.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.18.1/web.browser/moment.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.5/web.browser/match.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.5/web.browser/isPlainObject.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.5/web.browser/match_test.js" />
@@ -246,7 +248,9 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/web.browser/promise-tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/web.browser/runtime-tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/web.browser/runtime.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.18.1/web.browser/export.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/chart_chart/1.0.1-beta.4/web.browser/packages/chart_chart.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.18.1/web.browser/moment.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.5/web.browser/match.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.5/web.browser/isPlainObject.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.5/web.browser/match_test.js" />

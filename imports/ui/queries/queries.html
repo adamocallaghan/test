@@ -2,26 +2,70 @@
     {{>navbar}}
     {{>sidebar}}
     {{#if currentUser }}
-    <div class="query_page main-content col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-2">
-    <header>
-        <h1>Queries <span class="badge">{{incompleteCount}}</span></h1>
+    <div class="query_page main-content col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <header>
+            <h1>Queries <span class="badge">{{incompleteCount}}</span></h1>
+            <blockquote>You can create and save queries on this page. Simply select a source, sentiment polarity and a enter a search term. Your new query will be created and display underneath where you can then run it to see results.</blockquote>
 
-        {{#if currentUser}}
-            <form class="new-task">
-                <input type="text" class="form-control" name="text" placeholder="Type to add new tasks" />
-                <label class="hide-completed pull-right">
-                    <input type="checkbox" />
-                    Hide Completed
-                </label>
-            </form>
-        {{/if}}
-    </header>
-
-    <div class="panel-group" style="padding-top: 30px">
-        {{#each querys}}
-            {{> query}}
-        {{/each}}
-    </div>
+            {{#if currentUser}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group col-md-12">
+                            <form class="new-task">
+                                <!-- Radio Buttons -->
+                                <div class="col-md-6">
+                                    <h4>Select a Source:</h4>
+                                    <div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios1" value="RTE">RTE</label></div>
+                                    <div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios2" value="Irish Times">Irish Times</label></div>
+                                    <div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios3" value="Irish Independent">Irish Independent</label></div>
+                                    <div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios4" value="Irish Examiner">Irish Examiner</label></div>
+                                </div>
+                                <!-- Radio Buttons -->
+                                <div class="col-md-6">
+                                <h4>Select Sentiment:</h4>
+                                    <div class="radio"><label><input type="radio" name="sentimentOptions" id="sentimentOptions1" value="pos">Positive</label></div>
+                                    <div class="radio"><label><input type="radio" name="sentimentOptions" id="sentimentOptions2" value="neg">Negative</label></div>
+                                    <div class="radio"><label><input type="radio" name="sentimentOptions" id="sentimentOptions3" value="neu">Neutral</label></div>
+                                </div>
+                                <!-- Search Field & Input Group Button -->
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <span class="input-group-btn">
+                                            <input type="text" class="form-control" name="text" placeholder="Search term..." />
+                                            <button class="btn btn-default" type="button">Save</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {{/if}}
+        </header>
+        <div class="col-md-11">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Your Saved Queries</div>
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Sentiment</th>
+                        <th>Search Term</th>
+                        <th>Run Query</th>
+                        <th>Delete Query</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{#each querys}}
+                            {{> query}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     {{/if}}
 </template>

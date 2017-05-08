@@ -131,4 +131,10 @@ Template.home.events({
         });
         console.log(this._id);
     },
+    'click .add-to-report'() {
+        event.preventDefault();
+        // Get the current search results
+
+        // Insert into Reports collection
+    },
 });

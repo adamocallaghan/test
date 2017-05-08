@@ -2,7 +2,7 @@ import '../imports/startup/accounts-config';
 import '../imports/ui/todos/todos.js';
 import '../imports/ui/queries/queries.js';
 import '../imports/ui/home/home.js';
-import '../imports/ui/report/report.html';
+import '../imports/ui/report/report.js';
 import '../imports/ui/home/home.html';
 import '../imports/ui/overview/overview.js';
 import '../imports/ui/trending/trending.html';
