@@ -8,13 +8,15 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Generate Report About...</th>
+                    <th>Report Subject</th>
+                    <th>Run Report</th>
                 </tr>
             </thead>
             <tbody>
             {{#each reports}}
                 <tr>
                     <td>{{reportTerm}}</td>
+                    <td><button class="btn btn-success run-report">Run</button></td>
                 </tr>
             {{/each}}
             </tbody>
