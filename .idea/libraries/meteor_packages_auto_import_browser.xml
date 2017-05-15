@@ -2,6 +2,7 @@
   <library name="meteor-packages-auto-import-browser" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/nilsdannemann_pdfmake/1.0.38/web.browser/packages/nilsdannemann_pdfmake.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.8/web.browser/random_stream.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tmeasday_test-reporter-helpers/0.2.1/web.browser/test-reporter-helpers.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.8/web.browser/method_invocation.js" />
@@ -400,6 +401,7 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/nilsdannemann_pdfmake/1.0.38/web.browser/packages/nilsdannemann_pdfmake.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.8/web.browser/random_stream.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tmeasday_test-reporter-helpers/0.2.1/web.browser/test-reporter-helpers.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.8/web.browser/method_invocation.js" />
