@@ -60,11 +60,39 @@
                     </thead>
                     <tbody>
                         {{#each querys}}
-                            {{> query}}
+                            <tr class="{{polcolor}}">
+                                <td>{{source}}</td>
+                                <td>{{polarity}}</td>
+                                <td>{{text}}</td>
+                                <td><button class="btn btn-success run">Run</button></td>
+                                <td><button class="btn btn-danger delete">Delete</button></td>
+                            </tr>
                         {{/each}}
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="queryresults">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Sentiment</th>
+                    <th>Score</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each queriesResults}}
+                    <tr>
+                        <td>{{source}}</td>
+                        <td>{{score}}</td>
+                        <td>{{polarity}}</td>
+                        <td>{{description}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
     {{/if}}

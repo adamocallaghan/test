@@ -131,10 +131,12 @@ Template.home.events({
         });
         console.log(this._id);
     },
-    'click .add-to-report'() {
+    'click .add-to-report'(event, instance) {
         event.preventDefault();
+        //Reports.remove({});
         // Get the current search results
-
+        var reportTerm = instance.state.get('searchTerm');
         // Insert into Reports collection
+        Reports.insert({reportTerm: reportTerm});
     },
 });

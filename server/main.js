@@ -15,14 +15,14 @@ import '../imports/api/queries.js';
 SyncedCron.add({
     name: 'Scraping Sources, Parsing Data, and Inserting to Database',
     schedule: function(parser) {
-        // parser is a later.parse object
+        // Run job every 15 minutes
         return parser.text('every 15 mins');
     },
     job: function () {
-        // Process starting...
+        // Process starting
         console.log("Server-side Scrape & NLP");
 
-        // Scrape main Irish websites
+        // Scrape top Irish news sources
         websiteData = Scrape.feed("http://www.rte.ie/news/rss/news-headlines.xml");
         irishTimesData = Scrape.feed("https://www.irishtimes.com/cmlink/news-1.1319192");
         independentData = Scrape.feed("http://www.independent.ie/breaking-news/irish-news/?service=Rss");
@@ -224,7 +224,7 @@ SyncedCron.add({
         // ========== Irish Independent scraping... ==========
         console.log("Scraping Irish Independent Data");
 
-        // Irish Independent - Transform Retrieve Data into Usable Information
+        // Irish Independent - Transform Retrieved Data into Usable Information
         for (i=0; i<independentData.items.length; i++) {
             // === NLP Processing ===
             articleTitle = independentData.items[i].title; // Get the title
@@ -236,8 +236,7 @@ SyncedCron.add({
             articlePeople = nlp.text(articleInfo.text).people(); // Find the named people in the text
             articleSource = "Irish Independent";
 
-            // Checking to see if the article title already exists in the DB
-
+            // Checking to see if the article already exists in the DB
             // If it does: don't do anything...
             if (exists != null) {
                 console.log("Found in DB: Ignoring");
