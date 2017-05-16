@@ -4,7 +4,24 @@
     {{#if currentUser }}
     <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <h1>Trending</h1>
-        <p>Lorem ipsum...</p>
+        <p>Search here for information on Twitter:</p>
+        <button class="search">Trump</button>
+        <table class="table">
+            <thead>
+            <th>Time</th>
+            <th>Tweet</th>
+            <th>Source</th>
+            </thead>
+            <tbody>
+            {{#each tweets}}
+                <tr>
+                    <td>{{time}}</td>
+                    <td>{{tweet}}</td>
+                    <td>{{source}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
     </div>
     {{/if}}
 </template>

@@ -405,3 +405,58 @@ SyncedCron.add({
         console.log("Server test works!");
     }
 });
+
+Meteor.methods({
+    'findTweets': function(mySearchTerm){
+        console.log("Hello server!" + mySearchTerm);
+        // Remove all tweets from collection (fresh search)
+        Tweets.remove({});
+
+        var TwitterPosts, streamOfTweets, rteStreamTweets;
+        TwitterPosts = require('twitter-screen-scrape');
+
+        rteStreamTweets = new TwitterPosts({
+            username: 'rte',
+            retweets: false
+        });
+
+        rteStreamTweets.on('readable', function() {
+            var time, tweet;
+            tweet = rteStreamTweets.read();
+            time = new Date(tweet.time * 1000);
+            Tweets.insert({
+                time: time.toLocaleDateString(),
+                tweet: tweet.text,
+                source: "RTE",
+            });
+            console.log([
+                "RTE's tweet from ",
+                time.toLocaleDateString(),
+                " is ",
+                tweet.text
+            ].join(''));
+        });
+
+        streamOfTweets = new TwitterPosts({
+            username: 'Independent_ie',
+            retweets: false
+        });
+
+        streamOfTweets.on('readable', function() {
+            var time, tweet;
+            tweet = streamOfTweets.read();
+            time = new Date(tweet.time * 1000);
+            Tweets.insert({
+                time: time.toLocaleDateString(),
+                tweet: tweet.text,
+                source: "Irish Independent",
+            });
+            console.log([
+                "Irish Independent's tweet from ",
+                time.toLocaleDateString(),
+                " is ",
+                tweet.text
+            ].join(''));
+        });
+    }
+});
