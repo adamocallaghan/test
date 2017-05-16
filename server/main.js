@@ -412,9 +412,10 @@ Meteor.methods({
         // Remove all tweets from collection (fresh search)
         Tweets.remove({});
 
-        var TwitterPosts, streamOfTweets, rteStreamTweets;
+        var TwitterPosts, streamOfTweets, rteStreamTweets, irishTimesStreamTweets, irishExaminerStreamTweets;
         TwitterPosts = require('twitter-screen-scrape');
 
+        // RTE
         rteStreamTweets = new TwitterPosts({
             username: 'rte',
             retweets: false
@@ -424,11 +425,27 @@ Meteor.methods({
             var time, tweet;
             tweet = rteStreamTweets.read();
             time = new Date(tweet.time * 1000);
+            var r1 = sentiment(tweet.text);
+
+            if (r1.score >= 1) {
+                polarity = "pos";
+                polcolor = "success";
+            } else if (r1.score <= -1) {
+                polarity = "neg";
+                polcolor = "danger";
+            } else if (r1.score < 1 && r1.score > -1) {
+                polarity = "neu";
+                polcolor = "info";
+            }
+
             Tweets.insert({
                 time: time.toLocaleDateString(),
                 tweet: tweet.text,
                 source: "RTE",
+                polarity: polarity,
+                polcolor: polcolor,
             });
+
             console.log([
                 "RTE's tweet from ",
                 time.toLocaleDateString(),
@@ -442,17 +459,112 @@ Meteor.methods({
             retweets: false
         });
 
+        // Irish Independent
         streamOfTweets.on('readable', function() {
             var time, tweet;
             tweet = streamOfTweets.read();
             time = new Date(tweet.time * 1000);
+            var r1 = sentiment(tweet.text);
+
+            if (r1.score >= 1) {
+                polarity = "pos";
+                polcolor = "success";
+            } else if (r1.score <= -1) {
+                polarity = "neg";
+                polcolor = "danger";
+            } else if (r1.score < 1 && r1.score > -1) {
+                polarity = "neu";
+                polcolor = "info";
+            }
+
             Tweets.insert({
                 time: time.toLocaleDateString(),
                 tweet: tweet.text,
                 source: "Irish Independent",
+                polarity: polarity,
+                polcolor: polcolor,
             });
+
             console.log([
                 "Irish Independent's tweet from ",
+                time.toLocaleDateString(),
+                " is ",
+                tweet.text
+            ].join(''));
+        });
+
+        // Irish Times
+        irishTimesStreamTweets = new TwitterPosts({
+            username: 'IrishTimes',
+            retweets: false
+        });
+
+        irishTimesStreamTweets.on('readable', function() {
+            var time, tweet;
+            tweet = irishTimesStreamTweets.read();
+            time = new Date(tweet.time * 1000);
+            var r1 = sentiment(tweet.text);
+
+            if (r1.score >= 1) {
+                polarity = "pos";
+                polcolor = "success";
+            } else if (r1.score <= -1) {
+                polarity = "neg";
+                polcolor = "danger";
+            } else if (r1.score < 1 && r1.score > -1) {
+                polarity = "neu";
+                polcolor = "info";
+            }
+
+            Tweets.insert({
+                time: time.toLocaleDateString(),
+                tweet: tweet.text,
+                source: "Irish Times",
+                polarity: polarity,
+                polcolor: polcolor,
+            });
+
+            console.log([
+                "Irish Times's tweet from ",
+                time.toLocaleDateString(),
+                " is ",
+                tweet.text
+            ].join(''));
+        });
+
+        // Irish Examiner
+        irishExaminerStreamTweets = new TwitterPosts({
+            username: 'irishexaminer',
+            retweets: false
+        });
+
+        irishExaminerStreamTweets.on('readable', function() {
+            var time, tweet;
+            tweet = irishExaminerStreamTweets.read();
+            time = new Date(tweet.time * 1000);
+            var r1 = sentiment(tweet.text);
+
+            if (r1.score >= 1) {
+                polarity = "pos";
+                polcolor = "success";
+            } else if (r1.score <= -1) {
+                polarity = "neg";
+                polcolor = "danger";
+            } else if (r1.score < 1 && r1.score > -1) {
+                polarity = "neu";
+                polcolor = "info";
+            }
+
+            Tweets.insert({
+                time: time.toLocaleDateString(),
+                tweet: tweet.text,
+                source: "Irish Examiner",
+                polarity: polarity,
+                polcolor: polcolor,
+            });
+
+            console.log([
+                "Irish Examiner's tweet from ",
                 time.toLocaleDateString(),
                 " is ",
                 tweet.text

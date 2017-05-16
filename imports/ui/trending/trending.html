@@ -5,17 +5,25 @@
     <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <h1>Trending</h1>
         <p>Search here for information on Twitter:</p>
-        <button class="search">Trump</button>
+        <!-- Search Box -->
+        <form class="new-search form-group input-group">
+            <input type="text" class="form-control" name="text" placeholder="Search for people..." />
+            <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">Search</button>
+            </span>
+        </form>
         <table class="table">
             <thead>
-            <th>Time</th>
+            <th>Date</th>
+            <th>Polarity</th>
             <th>Tweet</th>
             <th>Source</th>
             </thead>
             <tbody>
             {{#each tweets}}
-                <tr>
+                <tr class="{{polcolor}}">
                     <td>{{time}}</td>
+                    <td>{{polarity}}</td>
                     <td>{{tweet}}</td>
                     <td>{{source}}</td>
                 </tr>

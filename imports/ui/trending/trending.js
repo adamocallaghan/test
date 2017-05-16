@@ -20,12 +20,16 @@ Template.trending.helpers({
 });
 
 Template.trending.events({
-    'click .search'(event, instance) {
+    'submit .new-search'(event, instance) {
         event.preventDefault();
-        mySearchTerm = "Trump";
+        // Get the target
+        const target = event.target;
+        // Search Term
+        var mySearchTerm = target.text.value; // make search term the one the user entered
         // Setting the state
         instance.state.set('searchTerm', mySearchTerm);
         console.log("Hello client!" + mySearchTerm);
-        Meteor.call('findTweets', mySearchTerm, function(error, result) {});
+        // *** STOPPING CALL FOR NOW TO STOP SO MUCH SERVER PROCESSING ***
+        //Meteor.call('findTweets', mySearchTerm, function(error, result) {});
     },
 });
