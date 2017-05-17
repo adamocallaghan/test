@@ -3,15 +3,19 @@
     {{>sidebar}}
     {{#if currentUser }}
     <div class="query_page col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <header>
         <h1>Trending</h1>
-        <p>Search here for information on Twitter:</p>
-        <!-- Search Box -->
+            <blockquote>Martello scrapes Twitter every 15 minutes for new tweets from Ireland's top news sources. Search here for tweets by Keyword. Tweets are colour-coded by their sentiment.</blockquote>
+            <!-- Search Box -->
+        <div class="col-md-12">
         <form class="new-search form-group input-group">
             <input type="text" class="form-control" name="text" placeholder="Search for people..." />
             <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary">Search</button>
             </span>
         </form>
+        </div>
+        </header>
         <table class="table">
             <thead>
             <th>Date</th>

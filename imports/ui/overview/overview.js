@@ -193,7 +193,7 @@ Template.overview.thisWeekChart = function() {
         colors: ['red', 'orange', 'green', 'blue', 'purple', 'brown'],
 
         xAxis: {
-            categories: ['Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun', 'Mon']
+            categories: ['Thurs', 'Fri', 'Sat', 'Sun', 'Mon', 'Tues', 'Wed']
         },
 
         series: [{

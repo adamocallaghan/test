@@ -410,7 +410,7 @@ Meteor.methods({
     'findTweets': function(mySearchTerm){
         console.log("Hello server!" + mySearchTerm);
         // Remove all tweets from collection (fresh search)
-        Tweets.remove({});
+        //Tweets.remove({});
 
         var TwitterPosts, streamOfTweets, rteStreamTweets, irishTimesStreamTweets, irishExaminerStreamTweets;
         TwitterPosts = require('twitter-screen-scrape');

@@ -14,7 +14,7 @@ Template.trending.helpers({
         if (instance.state.get('searchTerm')) {
             today = new Date;
             niceToday = today.toLocaleDateString();
-            return Tweets.find({tweet: {$regex : ".*"+Template.instance().state.get('searchTerm')+".*"}});
+            return Tweets.find({tweet: {$regex : ".*"+Template.instance().state.get('searchTerm')+".*"}}, { sort: { time: -1 } });
         }
     },
 });

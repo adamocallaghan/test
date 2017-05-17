@@ -11,7 +11,7 @@ Template.report.helpers({
 });
 
 Template.report.events({
-    'click .run-report'(event) {
+    'click .run-report'(event, instance) {
         // Prevent default browser form submit
         event.preventDefault();
         searchTerm = this.reportTerm;
